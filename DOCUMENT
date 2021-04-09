@@ -101,3 +101,94 @@ The presentation layer formats or translates data for the application layer base
 
 Application Layer
 At this layer, both the end user and the application layer interact directly with the software application. This layer sees network services provided to end-user applications such as a web browser or Office 365. The application layer identifies communication partners, resource availability, and synchronizes communication.
+
+QUESTION-3-. Explain Virtual memory and swap memory
+ANSWER3-Virtual memory is a memory management technique where secondary memory can be used as if it were a part of the main memory. Virtual memory is a very common technique used in the operating systems (OS) of computers.
+
+Virtual memory uses hardware and software to allow a computer to compensate for physical memory shortages, by temporarily transferring data from random access memory (RAM) to disk storage. In essence, virtual memory allows a computer to treat secondary memory as though it were the main memory.
+
+Today, most PCs come with up to around 4 GB of RAM. However, sometimes this isn't enough to run all the programs a user might want to use at once. This is where virtual memory comes in. Virtual memory can be used to swap data that has not been used recently -- and move it over to a storage device like a hard drive or solid-state drive (SDD). This will free up more space on the RAM.
+
+Virtual memory is important for improving system performance, multitasking, using large programs and flexibility. However, users shouldn't rely on virtual memory too much, because using virtual data is considerably slower than the use of RAM. If the OS has to swap data between virtual memory and RAM too often, it can make the computer feel very slow -- this is called thrashing.
+
+Virtual memory was developed at a time when physical memory -- also referenced as RAM -- was expensive. Computers have a finite amount of RAM, so memory can run out, especially when multiple programs run at the same time. A system using virtual memory uses a section of the hard drive to emulate RAM. With virtual memory, a system can load larger programs or multiple programs running at the same time, allowing each one to operate as if it has infinite memory and without having to purchase more RAM.
+
+How virtual memory works
+Virtual memory uses both computer hardware and software to work. When an application is in use, data from that program is stored in a physical address using RAM. More specifically, virtual memory will map that address to RAM using a memory management unit (MMU). The OS will make and manage memory mappings by using page tables and other data structures. The MMU, which acts as an address translation hardware, will automatically translate the addresses.
+SWAP MEMORY
+Swap memory or swap space is the on-disk component of the virtual memory system. It is pre-configured as a swap partition or a swap file when Linux is first installed, but can also be added later.
+Swap space in Linux is used when the amount of physical memory (RAM) is full. If the system needs more memory resources and the RAM is full, inactive pages in memory are moved to the swap space. While swap space can help machines with a small amount of RAM, it should not be considered a replacement for more RAM. Swap space is located on hard drives, which have a slower access time than physical memory.
+
+Swap space can be a dedicated swap partition (recommended), a swap file, or a combination of swap partitions and swap files.
+
+Swap should equal 2x physical RAM for up to 2 GB of physical RAM, and then an additional 1x physical RAM for any amount above 2 GB, but never less than 32 MB.
+
+So, if:
+
+M = Amount of RAM in GB, and S = Amount of swap in GB, then
+
+If M < 2
+	S = M *2
+Else
+	S = M + 2
+Using this formula, a system with 2 GB of physical RAM would have 4 GB of swap, while one with 3 GB of physical RAM would have 5 GB of swap. Creating a large swap space partition can be especially helpful if you plan to upgrade your RAM at a later time.
+
+For systems with really large amounts of RAM (more than 32 GB) you can likely get away with a smaller swap partition (around 1x, or less, of physical RAM).
+QUESTION-4- Explain any 3 Scheduling algorithms with an example.
+ANSWER-4-Types of CPU scheduling Algorithm
+There are mainly six types of process scheduling algorithms
+
+First Come First Serve (FCFS)
+Shortest-Job-First (SJF) Scheduling
+Shortest Remaining Time
+Priority Scheduling
+Round Robin Scheduling
+Multilevel Queue Scheduling
+
+First Come First Serve
+First Come First Serve is the full form of FCFS. It is the easiest and most simple CPU scheduling algorithm. In this type of algorithm, the process which requests the CPU gets the CPU allocation first. This scheduling method can be managed with a FIFO queue.
+
+As the process enters the ready queue, its PCB (Process Control Block) is linked with the tail of the queue. So, when CPU becomes free, it should be assigned to the process at the beginning of the queue.
+
+Characteristics of FCFS method:
+It offers non-preemptive and pre-emptive scheduling algorithm.
+Jobs are always executed on a first-come, first-serve basis
+It is easy to implement and use.
+However, this method is poor in performance, and the general wait time is quite high.
+
+Shortest Remaining Time
+The full form of SRT is Shortest remaining time. It is also known as SJF preemptive scheduling. In this method, the process will be allocated to the task, which is closest to its completion. This method prevents a newer ready state process from holding the completion of an older process.
+
+
+Characteristics of SRT scheduling method:
+This method is mostly applied in batch environments where short jobs are required to be given preference.
+This is not an ideal method to implement it in a shared system where the required CPU time is unknown.
+Associate with each process as the length of its next CPU burst. So that operating system uses these lengths, which helps to schedule the process with the shortest possible time.
+
+Priority Based Scheduling
+Priority scheduling is a method of scheduling processes based on priority. In this method, the scheduler selects the tasks to work as per the priority.
+
+Priority scheduling also helps OS to involve priority assignments. The processes with higher priority should be carried out first, whereas jobs with equal priorities are carried out on a round-robin or FCFS basis. Priority can be decided based on memory requirements, time requirements, etc.
+QUESTION-5-Explain deadlock in detail and its characteristics?
+ANSWER-5-A deadlock happens in operating system when two or more processes need some resource to complete their execution that is held by the other process.
+
+A deadlock occurs if the four Coffman conditions hold true. But these conditions are not mutually exclusive. They are given as follows −
+
+Mutual Exclusion
+There should be a resource that can only be held by one process at a time. In the diagram below, there is a single instance of Resource 1 and it is held by Process 1 only.
+
+Mutual Exclusion
+
+Hold and Wait
+A process can hold multiple resources and still request more resources from other processes which are holding them. In the diagram given below, Process 2 holds Resource 2 and Resource 3 and is requesting the Resource 1 which is held by Process 1.
+
+Hold and Wait
+
+No Preemption
+A resource cannot be preempted from a process by force. A process can only release a resource voluntarily. In the diagram below, Process 2 cannot preempt Resource 1 from Process 1. It will only be released when Process 1 relinquishes it voluntarily after its execution is complete.
+
+No Preemption
+
+Circular Wait
+A process is waiting for the resource held by the second process, which is waiting for the resource held by the third process and so on, till the last process is waiting for a resource held by the first process. This forms a circular chain. For example: Process 1 is allocated Resource2 and it is requesting Resource 1. Similarly, Process 2 is allocated Resource 1 and it is requesting Resource 2. This forms a circular wait loop.
+
